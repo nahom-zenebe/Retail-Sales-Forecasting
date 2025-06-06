@@ -8,7 +8,6 @@ kaggle.json
 # 📦 Data Files
 # =====================
 *.zip
-*.csv
 *.tsv
 *.parquet
 *.xlsx
