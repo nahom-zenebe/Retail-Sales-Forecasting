@@ -1,0 +1,75 @@
+# =====================
+# 🗃️ Kaggle Credentials
+# =====================
+kaggle.json
+.kaggle/
+
+# =====================
+# 📦 Data Files
+# =====================
+*.zip
+*.csv
+*.tsv
+*.parquet
+*.xlsx
+*.xls
+*.sav
+*.h5
+*.pkl
+*.npy
+*.npz
+*.feather
+*.joblib
+
+# Optional: ignore any "data" folder
+# /data/
+# /datasets/
+
+# =====================
+# 🐍 Python
+# =====================
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# =====================
+# 📓 Jupyter Notebooks
+# =====================
+.ipynb_checkpoints/
+
+# =====================
+# 🧪 Environment
+# =====================
+.env
+.env.*
+.venv/
+venv/
+*.env
+
+# =====================
+# 💻 VS Code
+# =====================
+.vscode/
+
+# =====================
+# 🗃️ System/OS files
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# 🧪 Test artifacts
+# =====================
+*.log
+*.out
+*.tmp
+
+# =====================
+# 🚫 Git itself
+# =====================
+*.swp
+*.lock
