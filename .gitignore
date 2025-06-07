@@ -72,3 +72,56 @@ Thumbs.db
 # =====================
 *.swp
 *.lock
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# macOS metadata
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# CSVs and data files (if not versioning them)
+data/
+*.csv
+*.tsv
+*.xlsx
+
+# Model files and outputs
+*.h5
+*.pkl
+*.joblib
+*.npy
+*.npz
+
+# Submission/output files
+submission.csv
+*.out
+*.sav
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pytest cache
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
