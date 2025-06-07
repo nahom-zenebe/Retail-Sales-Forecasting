@@ -95,7 +95,7 @@ venv/
 
 # CSVs and data files (if not versioning them)
 data/
-*.csv
+
 *.tsv
 *.xlsx
 
