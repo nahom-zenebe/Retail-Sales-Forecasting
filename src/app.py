@@ -1,34 +1,52 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import os
 
-# Load data
+st.set_page_config(page_title="Retail Sales Dashboard", layout="wide")
+
 base_dir = os.path.dirname(__file__)
-submission = pd.read_csv(os.path.join(base_dir, "../data/submission.csv"))
-test = pd.read_csv(os.path.join(base_dir, "../data/test_with_date.csv"), parse_dates=["Date"])
-merged = pd.merge(test, submission, on="Id")
+data_path = lambda file: os.path.join(base_dir, "../data", file)
 
-# Sidebar
-st.sidebar.header("Store & Date Filter")
+# Load data
+try:
+    submission = pd.read_csv(data_path("submission.csv"))
+    test = pd.read_csv(data_path("test.csv"), parse_dates=["Date"])  # test.csv with Date column
+    merged = pd.merge(test, submission, on="Id")
+except Exception as e:
+    st.error(f"Data loading error: {e}")
+    st.stop()
+
+# Sidebar filters
+st.sidebar.header("🔎 Filter")
 store_id = st.sidebar.selectbox("Select Store", sorted(merged["Store"].unique()))
-date_range = st.sidebar.date_input("Select Date Range", [merged["Date"].min(), merged["Date"].max()])
 
-# Filter
-filtered = merged[(merged["Store"] == store_id) &
-                  (merged["Date"] >= pd.to_datetime(date_range[0])) &
-                  (merged["Date"] <= pd.to_datetime(date_range[1]))]
+# Filter by store only (no date filtering)
+filtered = merged[merged["Store"] == store_id]
 
-# Title
-st.title(f"📊 Rossmann Sales Predictions – Store {store_id}")
+st.title("🏪 Retail Sales Prediction Dashboard")
+st.markdown(f"Visualizing predictions for **Store {store_id}**")
 
-# Line chart
+# Line chart of predicted sales over time for selected store
+st.subheader("📈 Sales Over Time")
 st.line_chart(filtered.set_index("Date")["Sales"])
 
-# Daily statistics
-st.subheader("📈 Sales Summary")
+# Sales summary stats
+st.subheader("🧮 Sales Summary Stats")
 st.dataframe(filtered[["Date", "Sales"]].describe())
 
+# Visual Gallery
+st.subheader("📊 Visual Insights")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.image(data_path("daily_sales_plot.png"), caption="Predicted Daily Sales", use_column_width=True)
+    st.image(data_path("dayofweek_plot.png"), caption="Avg Sales by Day of Week", use_column_width=True)
+
+with col2:
+    st.image(data_path("top_stores_plot.png"), caption="Top 20 Stores by Sales", use_column_width=True)
+    st.image(data_path("feature_importance_plot.png"), caption="Feature Importance", use_column_width=True)
+
 # Raw data toggle
-if st.checkbox("Show raw data"):
+with st.expander("📄 Show raw data"):
     st.dataframe(filtered)
