@@ -12,13 +12,13 @@ This project implements an advanced sales forecasting solution for retail stores
 │   ├── store.csv         # Store metadata
 │   └── sample_submission.csv  # Submission format
 ├── src/                  # Source code
-│   ├── data_processing.py    # Data preprocessing utilities
-│   ├── feature_engineering.py # Feature engineering pipeline
-│   ├── models.py         # Model implementations
-│   └── utils.py          # Utility functions
-├── notebooks/            # Jupyter notebooks for analysis
+│   ├── retail_sales.py    # Data preprocessing utilities
+│   ├──app.py # Creates an interactive dashboard to visualize
+│   ├── visualize_predictions.py    # Visualize our data
+│   
+|
 ├── requirements.txt      # Project dependencies
-└── main.py              # Main execution script
+
 ```
 
 ## Setup
