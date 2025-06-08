@@ -40,12 +40,12 @@ st.subheader("📊 Visual Insights")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image(data_path("daily_sales_plot.png"), caption="Predicted Daily Sales", use_column_width=True)
-    st.image(data_path("dayofweek_plot.png"), caption="Avg Sales by Day of Week", use_column_width=True)
+    st.image(data_path("daily_sales_plot.png"), caption="Predicted Daily Sales", use_container_width=True)
+    st.image(data_path("dayofweek_plot.png"), caption="Avg Sales by Day of Week", use_container_width=True)
 
 with col2:
-    st.image(data_path("top_stores_plot.png"), caption="Top 20 Stores by Sales", use_column_width=True)
-    st.image(data_path("feature_importance_plot.png"), caption="Feature Importance", use_column_width=True)
+    st.image(data_path("top_stores_plot.png"), caption="Top 20 Stores by Sales", use_container_width=True)
+    st.image(data_path("feature_importance_plot.png"), caption="Feature Importance", use_container_width=True)
 
 # Raw data toggle
 with st.expander("📄 Show raw data"):
