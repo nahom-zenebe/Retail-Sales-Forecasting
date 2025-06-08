@@ -59,7 +59,7 @@ features = ["Store", "DayOfWeek", "Promo", "Year", "Month", "Day", "WeekOfYear",
             "CompetitionOpenSince", "IsPromoMonth"]
 
 X_train = train[features]
-y_train = train["Sales"]
+y_train = train["Sales"] 
 X_test = test[features]
 
 # Train LightGBM model
@@ -67,9 +67,10 @@ logging.info("Training model...")
 model = LGBMRegressor(n_estimators=1000, learning_rate=0.05)
 model.fit(X_train, y_train)
 
-# Cross-validation score
-cv_score = cross_val_score(model, X_train, y_train, scoring='neg_root_mean_squared_error', cv=3)
-logging.info("Cross-validated RMSE: %.2f", -cv_score.mean())
+# Cross-validation score (manual RMSE calculation for compatibility)
+cv_score = cross_val_score(model, X_train, y_train, scoring='neg_mean_squared_error', cv=3)
+rmse_cv = np.sqrt(-cv_score.mean())
+logging.info("Cross-validated RMSE: %.2f", rmse_cv)
 
 # Built-in Feature Importance Plot
 importances = model.feature_importances_
